@@ -1,0 +1,24 @@
+{
+  "ID": "Lucus.XPOverflow",
+  "AssemblyName": "XPOverflow.dll",
+  "Author": [
+    {
+      "Key": "English",
+      "Value": "Lucus"
+    }
+  ],
+  "Version": "1.0",
+  "Name": [
+    {
+      "Key": "English",
+      "Value": "XP Overflow"
+    }
+  ],
+  "Description": [
+    {
+      "Key": "English",
+      "Value": "Converts mission experience to skill points. \n\nHighly configurable so that players can adjust the mod's balance to their liking. \n\nShould be compatible with all other mods on the workshop, including Terror from the Void."
+    }
+  ],
+  "Dependencies": []
+}
