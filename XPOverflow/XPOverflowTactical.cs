@@ -42,7 +42,7 @@ namespace XPOverflow
 				int Ratio = Mathf.Max(1, Config.Ratio);
 				int SPtoAdd;
 				int Overflow;
-				if(Config.WhenToApply == XPOverflowConfig.ApplicationRequirement.LV7_Only)
+				if(Config.WhenToApply == XPOverflowConfig.ApplicationRequirement.LV7)
 				{
 					Overflow = actor.LevelProgression.ExperienceReference + actor.LevelProgression.ExperienceEarned - actor.LevelProgression.Def.XPCap;
 				}
@@ -54,13 +54,13 @@ namespace XPOverflow
 				{
 					continue;
 				}
-				if(Config.Trigger == XPOverflowConfig.TriggerConditions.Threshold)
+				if(Config.Limit == XPOverflowConfig.ApplicationLimit.Single)
 				{
-					SPtoAdd = Overflow > Ratio ? Mathf.Max(1, Config.SingleUseSPGain) : 0;
+					SPtoAdd = Overflow > Ratio ? Mathf.Max(1, Config.SPGain) : 0;
 				}
 				else //Continuous or repeated trigger.
 				{
-					SPtoAdd = Overflow / Ratio;
+					SPtoAdd = (Overflow / Ratio) * Mathf.Max(1, Config.SPGain);
 				}
 				if(Config.Target == XPOverflowConfig.ApplicationTarget.Faction)
 				{

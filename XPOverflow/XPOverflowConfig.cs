@@ -12,7 +12,7 @@ namespace XPOverflow
 	{
 		public enum ApplicationRequirement
 		{
-			AlwaysActive, LV7_Only
+			Any, LV7
 		}
 
 		public enum ApplicationTarget
@@ -20,24 +20,24 @@ namespace XPOverflow
 			Soldier, Faction
 		}
 
-		public enum TriggerConditions
+		public enum ApplicationLimit
 		{
-			Threshold, Continuous
+			Single, Unlimited
 		}
 
-		[ConfigField(text: "When does the effect apply?", description: "By default the EXP->SP overflow will only occur for LV7 Soldiers that will otherwise waste the EXP earned on missions. \n\nAlwaysActive makes it apply for all soldiers regardless of level.")]
-		public ApplicationRequirement WhenToApply = ApplicationRequirement.LV7_Only;
+		[ConfigField(text: "Soldier Level Requirement", description: "LV7: Overflow only applies for LV7 Soldiers that will otherwise waste the EXP earned on missions. \n\nAny: Overflow applies for all soldiers regardless of level.")]
+		public ApplicationRequirement WhenToApply = ApplicationRequirement.LV7;
 
-		[ConfigField(text: "Overflow Beneficiary", description: "Select whether the generated SP goes to the individual soldier or the common pool.")]
+		[ConfigField(text: "Overflow Beneficiary", description: "Select whether the generated SP goes to the soldier or to the common pool.")]
 		public ApplicationTarget Target = ApplicationTarget.Soldier;
 		
-		[ConfigField(text: "Trigger Condition", description: "Threshold: Soldier earns a fixed amount of SP for earning above the threshold. \n\nContinuous: Gain SP as a ratio of EXP earned.")]
-		public TriggerConditions Trigger = TriggerConditions.Continuous;
+		[ConfigField(text: "Application Limit", description: "Single: SP payout occurs once per soldier if they earn more EXP than the requirement. \n\nUnlimited: Earn an SP payout for each multiple of the EXP Requirement.")]
+		public ApplicationLimit Limit = ApplicationLimit.Unlimited;
 		
-		[ConfigField(text: "EXP:SP Ratio or Threshold Value", description: "Set the EXP to SP ratio or EXP Threshold for an SP payout. Value must be positive.")]
+		[ConfigField(text: "XP Requirement", description: "Set the XP required per SP payout. Value must be positive.")]
 		public int Ratio = 50;
 
-		[ConfigField(text: "Threshold SP Gain", description: "Set the SP gain while using the Threshold Trigger condition.")]
-		public int SingleUseSPGain = 3;
+		[ConfigField(text: "SP Gain per payout", description: "Set the SP gain per payout. Value must be positive.")]
+		public int SPGain = 1;
 	}
 }
