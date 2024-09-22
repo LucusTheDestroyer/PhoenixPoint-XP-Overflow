@@ -39,7 +39,6 @@ namespace XPOverflow
                 {
                     continue;
                 }
-				int Ratio = Mathf.Max(1, Config.Ratio);
 				int SPtoAdd;
 				int Overflow;
 				if(Config.WhenToApply == XPOverflowConfig.ApplicationRequirement.LV7)
@@ -56,11 +55,11 @@ namespace XPOverflow
 				}
 				if(Config.Limit == XPOverflowConfig.ApplicationLimit.Single)
 				{
-					SPtoAdd = Overflow > Ratio ? Mathf.Max(1, Config.SPGain) : 0;
+					SPtoAdd = Overflow > Config.Ratio ? Config.SPGain : 0;
 				}
 				else //Continuous or repeated trigger.
 				{
-					SPtoAdd = (Overflow / Ratio) * Mathf.Max(1, Config.SPGain);
+					SPtoAdd = (Overflow / Config.Ratio) * Config.SPGain;
 				}
 				if(Config.Target == XPOverflowConfig.ApplicationTarget.Faction)
 				{

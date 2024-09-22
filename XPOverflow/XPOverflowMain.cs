@@ -58,6 +58,8 @@ namespace XPOverflow
 		/// </summary>
 		public override void OnConfigChanged() {
 			/// Config is accessible at any time.
+			Config.Ratio = Mathf.Max(1, Config.Ratio);
+			Config.SPGain = Mathf.Max(1, Config.SPGain);
 		}
 
 
